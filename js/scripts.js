@@ -1,7 +1,18 @@
 let button = document.getElementById('changeBackground');
-let count = 0;
-let colors = ['seagreen', 'fuchsia', 'white']
+let currentIndex = 0;
+let colors = ['seagreen', 'fuchsia', 'skyblue']
+let toggle = 0;
+let intervalId1 = null;
+
 button.addEventListener('click', () => {
-  const index = count++ % 3;
-  document.body.style.backgroundColor = colors[index];
+  console.log(intervalId1);
+  if (intervalId1) {
+    clearInterval(intervalId1);
+    intervalId1 = null;
+  } else {
+    intervalId1 = setInterval(function () {
+      document.body.style.backgroundColor = colors[currentIndex];
+      currentIndex = (currentIndex + 1) % colors.length;
+    }, 100);
+  }
 })
