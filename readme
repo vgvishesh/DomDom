@@ -1,0 +1,10 @@
+<!-- 
+  commands tried out:
+  document.body.style.backgroundColor = 'fuchsia';
+ -->
+
+<!-- 
+  commands tried out:
+  $0.nodeType
+  $0.nodeValue  
+ -->
