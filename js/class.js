@@ -1,0 +1,12 @@
+div.className = 'warning';
+div.classList.add('hidden');
+div.className = 'warning';
+div.classList.add('hidden');
+div.classList.toggle('hidden');
+div.classList.toggle('hidden');
+div.classList.toggle('hidden');
+div.classList.toggle('hidden');
+div.classList.toggle('hidden');
+div.classList.replace('active', 'warning');
+div.classList.replace('warning', 'active');
+div.classList.add('hidden');
