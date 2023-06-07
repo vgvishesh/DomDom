@@ -8,9 +8,10 @@ async function main() {
     var allLikes = document.querySelectorAll('[data-testid="like"]');
     let tweets = document.querySelectorAll('[data-testid="User-Name"]');
     for (let i = 0; i < allLikes.length; i++) {
-      await sleep(100);
+      await sleep(1000);
       allLikes[i].click();
       let tweetId = tweets[i].lastElementChild?.firstElementChild?.lastElementChild?.firstElementChild?.getAttribute('href');
+      tweetId = 'https://twitter.com' + tweetId;
       console.log(`liked tweet: ${tweetId}`)
       likedTweets.push(tweetId);
       totalCount++;
