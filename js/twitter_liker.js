@@ -1,6 +1,6 @@
 var totalLikedCount = 0;
 var sleep = (msec) => new Promise(resolve => setTimeout(resolve, msec));
-let maxTweets = 50;
+let maxTweets = 100;
 let scrollCount = 0;
 const regex = /.*\/status\/\d+$/;
 async function main() {
@@ -8,7 +8,7 @@ async function main() {
 
   while (totalLikedCount < maxTweets) {
     let tweets = document.querySelectorAll('[data-testid="cellInnerDiv"]');
-    console.log(`found ${tweets.length} tweets in view ${scrollCount}`);
+    console.log(`found ${tweets.length} tweets in view ${scrollCount}, total likes count ${totalLikedCount}`);
     for (let i = 0; i < tweets.length && totalLikedCount < maxTweets; i++) {
       await sleep(1000);
 
