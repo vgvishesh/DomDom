@@ -1,26 +1,37 @@
 var totalLikedCount = 0;
 var sleep = (msec) => new Promise(resolve => setTimeout(resolve, msec));
 let maxTweets = 50;
+let scrollCount = 0;
+const regex = /.*\/status\/\d+$/;
 async function main() {
   let likedTweets = [];
 
   while (totalLikedCount < maxTweets) {
-    var allLikes = document.querySelectorAll('[data-testid="like"]');
-    for (let i = 0; i < allLikes.length && totalLikedCount < maxTweets; i++) {
+    let tweets = document.querySelectorAll('[data-testid="cellInnerDiv"]');
+    console.log(`found ${tweets.length} tweets in view ${scrollCount}`);
+    for (let i = 0; i < tweets.length && totalLikedCount < maxTweets; i++) {
       await sleep(1000);
-      allLikes[i].click();
 
-      const user = allLikes[i].parentElement.parentNode.parentNode.parentNode.firstChild.firstChild.firstChild.firstChild.firstChild;
-      let tweetId = user.lastElementChild?.firstElementChild?.lastElementChild?.firstElementChild?.getAttribute('href');
-      tweetId = 'https://twitter.com' + tweetId;
-
-      console.log(`liked tweet: ${tweetId}`)
-
-      likedTweets.push(tweetId);
-      totalLikedCount++;
+      let likeElement = tweets[i].querySelector('[data-testid="like"]')
+      if (likeElement) {
+        likeElement.click();
+        let linksElem = tweets[i].getElementsByTagName('a');
+        for (let j = 0; j < linksElem.length; j++) {
+          const link = linksElem[j].getAttribute('href');
+          if (link.match(regex)) {
+            const tweetId = 'https://twitter.com' + link;
+            likedTweets.push(tweetId);
+            console.log(`liked tweet: ${tweetId}`);
+            break;
+          }
+        }
+        totalLikedCount++;
+      }
     }
-    await sleep(1000);
+
     window.scrollTo(0, document.body.scrollHeight);
+    await sleep(10000);
+    scrollCount++;
   }
 
   likedTweets.forEach(t => {
