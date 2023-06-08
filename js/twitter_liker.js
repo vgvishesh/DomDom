@@ -1,20 +1,23 @@
-var totalCount = 0;
+var totalLikedCount = 0;
 var sleep = (msec) => new Promise(resolve => setTimeout(resolve, msec));
-
+let maxTweets = 1;
 async function main() {
   let likedTweets = [];
 
-  while (totalCount < 50) {
+  while (totalLikedCount < maxTweets) {
     var allLikes = document.querySelectorAll('[data-testid="like"]');
-    let tweets = document.querySelectorAll('[data-testid="User-Name"]');
-    for (let i = 0; i < allLikes.length; i++) {
+    for (let i = 0; i < allLikes.length && totalLikedCount < maxTweets; i++) {
       await sleep(1000);
       allLikes[i].click();
-      let tweetId = tweets[i].lastElementChild?.firstElementChild?.lastElementChild?.firstElementChild?.getAttribute('href');
+
+      const user = allLikes[i].parentElement.parentNode.parentNode.parentNode.firstChild.firstChild.firstChild.firstChild.firstChild;
+      let tweetId = user.lastElementChild?.firstElementChild?.lastElementChild?.firstElementChild?.getAttribute('href');
       tweetId = 'https://twitter.com' + tweetId;
+
       console.log(`liked tweet: ${tweetId}`)
+
       likedTweets.push(tweetId);
-      totalCount++;
+      totalLikedCount++;
     }
     await sleep(1000);
     window.scrollTo(0, document.body.scrollHeight);
