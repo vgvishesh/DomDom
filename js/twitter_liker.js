@@ -1,6 +1,6 @@
 var totalLikedCount = 0;
 var sleep = (msec) => new Promise(resolve => setTimeout(resolve, msec));
-let maxTweets = 1;
+let maxTweets = 50;
 async function main() {
   let likedTweets = [];
 
