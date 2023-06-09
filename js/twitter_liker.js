@@ -10,7 +10,7 @@ async function main() {
     let tweets = document.querySelectorAll('[data-testid="cellInnerDiv"]');
     console.log(`found ${tweets.length} tweets in view ${scrollCount}, total likes count ${totalLikedCount}`);
     for (let i = 0; i < tweets.length && totalLikedCount < maxTweets; i++) {
-      await sleep(1000);
+      await sleep(2000);
 
       let likeElement = tweets[i].querySelector('[data-testid="like"]')
       if (likeElement) {
