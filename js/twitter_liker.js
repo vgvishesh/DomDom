@@ -1,8 +1,16 @@
 var totalLikedCount = 0;
 var sleep = (msec) => new Promise(resolve => setTimeout(resolve, msec));
-let maxTweets = 100;
+let maxTweets = 50;
 let scrollCount = 0;
 const regex = /.*\/status\/\d+$/;
+
+function randomTime() {
+  const min = 1000;
+  const max = 4000;
+  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  return randomNumber;
+}
+
 async function main() {
   let likedTweets = [];
 
@@ -10,7 +18,8 @@ async function main() {
     let tweets = document.querySelectorAll('[data-testid="cellInnerDiv"]');
     console.log(`found ${tweets.length} tweets in view ${scrollCount}, total likes count ${totalLikedCount}`);
     for (let i = 0; i < tweets.length && totalLikedCount < maxTweets; i++) {
-      await sleep(2000);
+      const sleepTimer = randomTime();
+      await sleep(sleepTimer);
 
       let likeElement = tweets[i].querySelector('[data-testid="like"]')
       if (likeElement) {
