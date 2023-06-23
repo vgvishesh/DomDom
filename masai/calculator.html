@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masai_calculator</title>
+    <style>
+        #head{
+            text-align: center;
+            font-size: 60px;
+            font-weight: 800;
+            color: rgb(12, 137, 137);
+
+        }
+        #main{
+            width: 30%;
+            margin: auto;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #display{
+            margin: auto;
+            width: 80%;
+            height: 100px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        #key{
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        #key > div{
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #key h2{
+            text-align: center;
+        }
+        #c{
+            background-color: red ;
+        }
+        .math{
+            background-color: black;
+        }
+        .math h2{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="head">masai calculator</h1>
+    <div id="main">
+        <div id="display"></div>
+        <div id="key">
+            <div>
+                <h2>1</h2>
+            </div>
+            <div>
+                <h2>2</h2>
+            </div>
+            <div>
+                <h2>3</h2>
+            </div>
+            <div class="math">
+                <h2>+</h2>
+            </div>
+            <div>
+                <h2>4</h2>
+            </div>
+            <div>
+                <h2>5</h2>
+            </div>
+            <div>
+                <h2>6</h2>
+            </div>
+            <div class="math">
+                <h2>-</h2>
+            </div>
+            <div>
+                <h2>7</h2>
+            </div>
+            <div>
+                <h2>8</h2>
+            </div>
+            <div>
+                <h2>9</h2>
+            </div>
+            <div class="math">
+                <h2>x</h2>
+            </div>
+            <div id="c">
+                <h2>C</h2>
+            </div>
+            <div>
+                <h2>0</h2>
+            </div>
+            <div class="math">
+                <h2>=</h2>
+            </div>
+            <div class="math">
+                <h2>/</h2>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
